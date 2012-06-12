@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet/less" href="/style/styles.less" type="text/css" />
+  <script type="text/javascript" src='/js/less.js'></script>
+  <script type="text/javascript" src='/js/jquery.js'></script>
+  <script type="text/javascript" src='/js/underscore.js'></script>
+  <script type="text/javascript" src='/js/class.js'></script>
+  <script type="text/javascript" src='/js/raphael.js'></script>
+  <script type="text/javascript" src='/js/jquery.raphael.js'></script>
+  <script type="text/javascript" src='/js/app.js'></script>
+
+  <script type="text/javascript">$(document).ready(function(){ app.setup();});</script>
+  
+  <script type="text/javascript">
+  
+$(document).ready(function(){
+  var options = {width: 300, height: 300, container: $("div#content")[0]};
+    $.rsvg2raphael("/images/vector/sunray.svg", options,
+    function(paper, paths, dimensions) {
+    
+      // hide everything except for the first shape
+      var next = _(paths)
+        .without(paths["shape-0"]);
+
+      _(next).each(function(path) {
+          path.hide();
+        });
+        
+      var nextPaths = _(next).reduce([], function(memo, path) {
+        console.log(path, path.node, $(path.node).attr("d"));
+        memo.push($(path.node).attr("d"));
+        return memo;
+      });
+      
+      orig = paths["shape-0"];
+      orig.hide();
+      //origPath = $(paths["shape-0"].node).attr("d");
+      
+      function animateShape(index, orig, cpath) {
+        if (index == 0 || !cpath) {
+          cpath = orig.clone();
+        }
+        
+        var animateTo = nextPaths[index];
+        if (!animateTo) {
+          cpath.hide();
+          animateShape(0, orig);
+          return;
+        }
+        cpath.animate({path: animateTo}, 1000, function() { animateShape(index+1, orig, cpath); });
+      }
+      
+      function t (i) {
+        animateShape(0, orig);
+        if (i< 10) setTimeout(function () { t(i+1); }, 400);
+      }
+      t(0);
+      
+    });
+    
+  $("#content")
+    .width(options.width)
+    .height(options.height);
+});
+
+</script>
+
+
+</head>
+<body>
+	<div id="header">
+	  <img src="/images/savannah-full-sun.png" id="logo" />
+	  <div id="nav"></div>
+  </div>
+  <div id='content'>
+  </div>
+  <div id="footer"></div>
+</body>
+</html>

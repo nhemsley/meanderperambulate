@@ -1,0 +1,455 @@
+
+/* Variables */
+
+$font-color: #515151;
+$primary-one: #0079A4;
+$primary-two: gray;
+
+$header-font-color: white;
+
+$heading-font-color: #235E6F;
+$heading-font: Corbel,"Lucida Grande","Lucida Sans Unicode","Lucida Sans","DejaVu Sans","Bitstream Vera Sans","Liberation Sans",Verdana,"Verdana Ref",sans-serif;
+
+$border-color: #0079a4;
+$default-border: 3px solid $border-color;
+$content-border: 4px solid grey;
+$content-width: 60%;
+$background-color: #f4f4f4;
+
+
+/* Generic Classes */
+
+@mixin bigfont
+{
+  font: 14pt Corbel, sans-serif;
+  color: $heading-font-color;
+}
+
+@mixin notoprounded
+{
+  -webkit-border-top-right-radius: 0px;
+  -webkit-border-top-left-radius: 0px;
+  -moz-border-radius-topright: 0px;
+  -moz-border-radius-topleft: 0px;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  
+}
+
+@mixin shadow
+{
+  @include dropshadow(5px);
+}
+
+@mixin noshadow
+{
+  -moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+  
+}
+
+/* Functions */
+
+@mixin rounded($radius: 10px) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+
+}
+
+@mixin dropshadow($h: 3px, $v: 3px, $blur: 3px, $color:#666)
+{
+  -moz-box-shadow: $h $v $blur $color;
+	-webkit-box-shadow: $h $v $blur $color;
+	box-shadow: $h $v $blur $color;
+}
+
+@mixin bordered($width: 3px, $color: $border-color)
+{
+  border: $width solid $color;
+}
+
+
+.border
+{
+  @include bordered;
+}
+
+@mixin box
+{
+  @include bordered;
+}
+
+.rounded
+{
+  @include rounded;
+}
+
+.box-rounded
+{
+  @include bordered;
+  @include rounded;
+}
+
+@mixin padded
+{
+  padding: 15px;
+}
+
+@mixin box-shadow
+{
+  @include dropshadow;
+  @include bordered;
+}
+
+@mixin box-shadow-padded
+{
+  @include box-shadow;
+  @include padded;
+  @include rounded;
+}
+
+.margin
+{
+  margin: 10px;
+  margin-bottom: 20px;
+}
+
+.colorbox
+{
+  @include box;
+  background-color: $primary-one;
+}
+
+.rounded-small
+{
+  @include rounded(3px);
+}
+
+.rounded-big
+{
+  @include rounded(20px);
+}
+
+.gray
+{
+  background-color: gray;
+  border-color: gray;
+}
+
+.light
+{
+  background-color: #C4C4C4;
+  border-color: #C4C4C4;
+}
+
+@mixin light-border
+{
+  border-color: #C4C4C4;
+}
+
+.center
+{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin thick-border
+{
+  @include bordered(5px);
+}
+
+// should be classes
+#spacer
+{
+  height: 100px;
+}
+
+#spacer50
+{
+  height: 50px;
+}
+
+body
+{
+  font-family:Corbel,"Lucida Grande","Lucida Sans Unicode","Lucida Sans","DejaVu Sans","Bitstream Vera Sans","Liberation Sans",Verdana,"Verdana Ref",sans-serif;
+  font-size: 12pt;
+  color: $font-color;
+  line-height: 1.5;
+  background-image: url("/images/cross-hatch.png");
+}
+
+h1, h2, h3, h4, h5, h6
+{
+  text-shadow: #444444 1px 1px 1px;
+  font-family: $heading-font;
+  color: $heading-font-color;
+}
+
+h1
+{
+  font-size: 30px;
+
+}
+
+h2 
+{
+  color: light-gray;
+  font-size: 20px;
+  font-weight: 400;
+  padding-bottom: 10px;
+  border-bottom: 2px solid $primary-two;
+  a
+  {
+    text-decoration: none;
+  }
+}
+
+#content
+{
+  width: $content-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px;
+  margin-top: -100px;
+  padding-top: 200px;
+  border: $content-border;
+  border-bottom: none;
+  background-color: $background-color;
+}
+
+a
+{
+  color: $heading-font-color;
+}
+
+p
+{
+  margin: 0.5em 0px 0.5em 0px;
+  line-height: 1.5;
+}
+
+ul
+{
+  margin: 0.5em 0px 0.5em 0px;
+  line-height: 1.5;
+}
+
+/* Page Specific */
+
+div.section
+{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+div.details
+{
+  margin-bottom: 20px;
+  div.detail {
+    padding-top: 10px;
+    padding-bottom: 12px;
+    width: 50%;
+
+    span.label {
+      float: left;
+      width: 100px;
+      text-align: left;
+      font-weight: bold;
+      font-size: 11pt;
+    }
+
+    span.detail {
+      float: right;
+      width: 60%;
+      text-align: right;
+    } 
+  }
+}
+
+div.institution
+{
+  margin-top: 20px;  
+}
+
+div.experience
+{
+  margin-top: 20px;
+
+  span.business {
+    text-align: left;
+    font-weight: bold;
+    display: block;
+  }
+
+  span.dates {
+    font-weight: bold;
+    }
+}
+
+#header
+{
+  background-color: gray;
+  height: 70px;
+  #nav
+  {
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    @include bigfont;
+    @include bordered(5px, gray);
+    @include rounded(25px);
+    @include notoprounded;
+    background-color: $primary-one;
+    padding: 20px;
+    padding-top: 80px;
+    text-align: center;
+    
+    span, span.first
+    {
+      padding-left: 1em;
+      padding-right: 1em;
+      padding-bottom: 25px;
+      padding-top: 10px;
+      
+      a
+      {
+        color: $header-font-color;
+        text-decoration: none;
+
+      }
+    }
+    span.first 
+    {
+      border-left: none;
+    }
+    span:hover
+    {
+      background-color: $primary-two;
+    }
+  }
+
+}
+
+#goals
+{
+  @include box-shadow-padded;
+  font-family: $heading-font;
+  font-size: 20px;
+  color: white;
+  background-color: $primary-one;
+  position: absolute;
+  left: 60%;
+  right: 150px;
+  top: 170px;
+
+  p { margin-bottom: 10px; }
+  
+  span.title
+  {
+    font-style: italic;
+    font-weight: bold;
+  }
+  
+  a {color: white; }
+}
+
+div#footer
+{
+display: none;
+//  border-bottom: 2px solid $font-color;
+//  .dropshadow(-5px, -5px, 5px);
+}
+
+div.interest
+{
+  margin: 20px;
+  width: auto;
+  font-size: 20px;
+  img
+  {
+    float: left;
+    margin: 0 20px 20px 0;
+  }
+  img.nofloat 
+  {
+    float: none;
+  }
+}
+
+ul
+{
+  list-style:disc inside none;
+  margin-left: 1em;
+  text-indent: -1em;
+}
+
+div.reference
+{
+  margin-bottom: 10px;
+}
+
+p.reference
+{
+  font-weight: bold;
+}
+
+div#clicky
+{
+  background-color: $background-color;
+  position: relative;
+  text-align: center;
+  border-top: 3px solid $primary-one;
+  border-bottom: 3px solid $primary-one;
+  padding: 10px 0 10px 0; 
+}
+
+.hover
+{
+  position: relative;
+  padding-top: 80px;
+  padding-bottom: 30px;
+  margin: 3px;
+}
+
+.hover-hover
+{
+  @include box;
+  @include rounded;
+  background-color: gray;
+}
+
+#interest-container
+{
+  margin-top: 40px;
+}
+
+div.education
+{
+  margin-top: 70px;
+}
+
+img#logo
+{
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+div#carousel
+{
+  position: absolute;
+  left: $content-width + 350;
+  top: 200px;
+  @include box;
+  @include light-border;
+  @include thick-border;
+  @include rounded;
+  padding: 20px;
+  padding-left: 60px;
+  width: 210px;
+  z-index: -1;
+}

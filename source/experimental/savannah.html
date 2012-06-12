@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet/less" href="/style/styles.less" type="text/css" />
+  <script type="text/javascript" src='/js/less.js'></script>
+  <script type="text/javascript" src='/js/jquery.js'></script>
+  <script type="text/javascript" src='/js/underscore.js'></script>
+  <script type="text/javascript" src='/js/class.js'></script>
+  <script type="text/javascript" src='/js/raphael.js'></script>
+  <script type="text/javascript" src='/js/jquery.raphael.js'></script>
+  <script type="text/javascript" src='/js/app.js'></script>
+
+  <script type="text/javascript">$(document).ready(function(){ app.setup();});</script>
+  
+  <script type="text/javascript">
+  
+$(document).ready(function(){
+   function monkey (options)
+  {
+    options = options || {}
+    $("#logo").remove();
+    $.rsvg2raphael("/images/savannah.svg", options,
+    function(paper, paths, dimensions) {
+    
+      bg = paper.rect(0, 0, dimensions[2], dimensions[3]);
+      bg.toBack()
+      bg.attr("fill", "0-#15C1FA-#0079A4");
+      bg.attr("stroke", "none");
+    
+      $(paths.tail.node).mouseover(function(e) {
+        var animates =
+         ["M52.286410000000004,65.78845000000001C52.29341,67.57645000000001,52.642410000000005,69.59145000000001,53.352410000000006,71.33545000000001C54.002410000000005,72.93145000000001,54.88541000000001,74.53545000000001,56.19941000000001,75.64945C57.23541000000001,76.52745,57.86441000000001,76.92745000000001,59.920410000000004,77.30645", "M52.15621,66.02643C52.149210000000004,67.81443,51.80021,69.82943,51.09021,71.57343C50.44021,73.16943,49.55721,74.77343,48.24321,75.88743C47.207209999999996,76.76543,46.57821,77.16543,44.52221,77.54442999999999",
+"M52.254419999999996,66.14250000000004C52.261419999999994,67.93050000000004,52.160419999999995,70.08650000000004,52.33842,72.04650000000004C52.73542,76.41950000000004,54.33742,78.10150000000004,54.33742,78.10150000000004",
+"M52.09935,65.46673999999996C52.09935,65.46673999999996,52.122350000000004,67.04673999999996,52.18835,67.83273999999996C52.23635,68.40073999999996,52.31335,68.96773999999996,52.412349999999996,69.52973999999996C52.519349999999996,70.14473999999996,52.660349999999994,70.75373999999996,52.81335,71.35973999999996C52.94635,71.88473999999997,53.15435,72.39073999999997,53.26035,72.92173999999996C53.36235,73.43673999999996,53.424350000000004,73.96073999999996,53.43835,74.48473999999996C53.45235,74.99073999999996,53.44535,75.50473999999996,53.34935,76.00273999999996C53.26035,76.46473999999996,53.17335,76.95673999999995,52.90335,77.34173999999996C52.750350000000005,77.55873999999996,52.52835,77.74573999999996,52.27835,77.83273999999996C52.109350000000006,77.89073999999997,51.915350000000004,77.87673999999996,51.74235,77.83273999999996C51.52935,77.77873999999996,51.326350000000005,77.66573999999996,51.16135,77.52073999999996C50.96935,77.35073999999996,50.80435,77.13573999999996,50.71535,76.89573999999996C50.57435,76.51673999999996,50.50335,76.08073999999996,50.60335,75.68973999999996C50.65135,75.50673999999995,50.75235,75.30473999999995,50.92235,75.22073999999996C51.17335,75.09573999999996,51.558350000000004,75.07473999999996,51.76435,75.26573999999997C51.98335,75.46873999999997,51.88135,76.15273999999997,51.88135,76.15273999999997"]
+        
+        var index = 0;
+        function tail() {
+          if (index < animates.length) {
+            paths.tail.animate({path: animates[index]}, 300, tail);
+            index++;
+          }
+        }
+        tail();
+      });
+      
+      $(paths.tree.node).click(function(e) {
+        _([paths.tree, paths.monkey, paths.monkeyg, paths.tail]).each(function(el) {
+          el.animate({translation: "3, 0"}, 20, function() {
+            el.animate({translation: "-3, 0"}, 20);
+          })
+        });
+      
+        (function () {
+          var i=0;
+        
+          function dropApple() {
+            var apple = paths["apple-" + i];
+            if (apple) {
+              apple.animate({translation: "0, " + 90}, 500, function () {
+                apple.translate(0, - 90)
+              });
+              setTimeout(dropApple, 10);
+              i++;
+            }
+          }
+          dropApple();
+        })();
+      });
+      
+      (function () {
+
+        var clouds = paper.set();
+        var i = 0;
+        var cloud = paths["cloud-" + i];
+        while (cloud) {
+          clouds.push(cloud);
+          cloud = paths["cloud-" + ++i];
+        }
+        
+        var opacity = 0,
+            oStep = 0.0001;
+        
+        clouds.attr("opacity", opacity);
+        
+        var width = parseInt(dimensions[2]);
+        var translated = 0;
+        function moveCloud() {
+          function translateCloud(horiz) {
+            clouds.translate(horiz, 0);
+          }
+          translateCloud(-1);
+          opacity = opacity + oStep;
+          clouds.attr("opacity", opacity);
+          if (translated < -100) oStep = 0.005;
+          
+          translated += -1;
+          if (translated >  -1 *(width + 100)) {
+            setTimeout(moveCloud, 100);
+          }
+          else {
+            translateCloud(width + 100);
+            translated = 0;
+            opacity = 0;
+            oStep = 0.0001;
+            clouds.attr("opacity", opacity);
+            setTimeout(moveCloud, 5000);
+          }
+          
+        }
+        moveCloud();
+      })();
+      
+    });
+  }
+
+  $("#monkey").width(300).height(114);
+  monkey({container: $("div#monkey")[0]});
+
+});
+
+</script>
+
+
+</head>
+<body>
+	<div id="header">
+	  <img src="/images/savannah-full-sun.png" id="logo" />
+	  <div id="nav"></div>
+  </div>
+  <div id='content'>
+    <div id='monkey'></div>
+    <h1>Savannah</h1>
+    <p>This is a small experiment with Raphael and vector graphics.</p>
+    <p>Hover over the tail, click the tree, and watch the cloud cruise across the landscape. This is all javascript and vector graphics.</p>
+    <p>Basically this loads up the image from svg, converts the paths into raphael objects (also creating an index for each of the paths imported), and then has some hard-coded paths for the tail animation. It relies heavily on having id's of paths correctly named (i.e. cloud-0, cloud-1) which I quite liked, as it adds a dom-inspired, jquery-esque flavour to the excercise.</p>
+    <p>It's cute, but only works for one image dimension (300 * 114). This is a bug, as being vector it should work for any size & aspect ratio. However some of the problems stem from creating the image in Inkscape (although this is not a problem with Inkscape per-se).</p>
+    <p>Some more of the problems stem from my sh***y implementation of svg import.</p>
+    <p>More specifically, paths are fairly arbitrarily scaled & rotated etc in Inkscape. This is fine for Inkscape's purposes, but re-tooling the svg for nefarious purposes exposes some problems:</p>
+    <ul>
+      <li>There are sometimes some global transforms applied, depending (I think) on whether you resize the document, or move all the objects around the page as a group. This leads to some weird coordinates (i.e. a global translate of -600, then having object coords being +600)</li>
+      <li>So it would be nice to be able to normalize all coordinates wrt an arbitrary existant transform from within Inkscape. For instance there is usually a transform or two on the global Layer-1 group. It would be good to be able to expose this & be able to normalize it away when everything looks good.</li>
+      <li>Most of the issues is with my code, coords need to be normalized somehow. It would be nice if Raphael exposed a helper function (it probably does) to normalize a path. This would help, alot.</li>
+    </ul>
+  </div>
+  <div id="footer"></div>
+</body>
+</html>

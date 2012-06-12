@@ -1,0 +1,39 @@
+%style{:media => "screen", :type => "text/css"}
+  div#content
+  { width: 100% ; }
+  span#slideshow-toolbar
+  {
+  font-size: 10px !important;
+  }
+  span#slideshow-toolbar input#slideshowpage
+  {
+  font-size: 10px !important;
+  }
+  div#slideshow-toolbarcont
+  {
+  padding: 10px;
+  font-size: 10pt;
+  font-weight: normal;
+  }
+
+%script{:src => "/javascripts/x
+:javascript
+  $(document).ready(function(){
+    var slideshow = $("");
+  
+    var images = [
+      "PoliceAR2009_final0.jpg",
+      "PoliceAR2009_final1.jpg",
+      "PoliceAR2009_final2.jpg",
+      "PoliceAR2009_final3.jpg",
+      "PoliceAR2009_final4.jpg",
+      "PoliceAR2009_final5.jpg",
+      "PoliceAR2009_final6.jpg",
+      "PoliceAR2009_final7.jpg",
+      "PoliceAR2009_final8.jpg",
+      "PoliceAR2009_final9.jpg",
+      "PoliceAR2009_final10.jpg"];
+    app.dom().content().append(slideshow);
+    slideshow.slideshow(images, {path: "/images/pdf/", magnifiedPath: "/images/pdf/magnified/", pdfLink: "/images/pdf/PoliceAR2009_final.pdf"});
+  
+  });
