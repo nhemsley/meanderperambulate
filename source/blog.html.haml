@@ -1,4 +1,5 @@
 #blog
+  = Dir.getwd
   - Dir["source/blog/*.md"].each do |file|
     %a{:href => "/blog/" << file.split("/").last.sub(".md", "")}
       = file.split(".").first.split("/").last.titleize
