@@ -1,6 +1,6 @@
 #blog
   - Dir["source/blog/*.markdown"].each do |file|
     %p
-      %a{:href => "/blog/" << file.split("/").last.sub(".md", "")}
+      %a{:href => "/blog/" << file.split("/").last.split(".")[0..-2].join(".")}
         = file.split(".").first.split("/").last.titleize
     
