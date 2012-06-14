@@ -56,7 +56,15 @@ $background-color: #f4f4f4;
     -webkit-border-radius: $radius;
     -moz-border-radius: $radius;
     border-radius: $radius;
+}
 
+@mixin toprounded($radius: 10px) {
+    -webkit-border-top-right-radius: $radius;
+    -webkit-border-top-left-radius: $radius;
+    -moz-border-radius-topright: $radius;
+    -moz-border-radius-topleft: $radius;
+    border-top-right-radius: $radius;
+    border-top-left-radius: $radius;
 }
 
 @mixin dropshadow($h: 3px, $v: 3px, $blur: 3px, $color:#666)
@@ -301,17 +309,16 @@ div.experience
     @include rounded(25px);
     @include notoprounded;
     background-color: $primary-one;
-    padding: 20px;
-    padding-top: 80px;
+    padding: 80px 20px 10px 20px;
     text-align: center;
     
     span, span.first
     {
       padding-left: 1em;
       padding-right: 1em;
-      padding-bottom: 25px;
+      padding-bottom: 15px;
       padding-top: 10px;
-      
+      @include toprounded;
       a
       {
         color: $header-font-color;
