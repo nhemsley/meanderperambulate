@@ -58,7 +58,7 @@ resume = {
 resume.setup = function()
 {
   var cont = $.zc("div#resume");
-  var content = app.dom().content();
+  var content = App.dom.content();
   content.append(cont);
   cont.append("<div class='details section'></div>");
   var container = cont.children().last();

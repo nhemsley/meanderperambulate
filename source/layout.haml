@@ -1,22 +1,4 @@
-!!!
-%html
-  %head
-    %meta{:charset => "UTF-8"}/
-    %title
-    = stylesheet_link_tag "normalize"
-    = stylesheet_link_tag "site"
-    = javascript_include_tag "less"
-    = javascript_include_tag "jquery"
-    = javascript_include_tag "underscore"
-    = javascript_include_tag "class"
-    = javascript_include_tag "raphael"
-    = javascript_include_tag "jquery.raphael"
-    = javascript_include_tag "app"
-    :javascript
-      $(document).ready(function(){new App(true)});
-  %body
-    #header
-      #nav
-    #content
-      = yield
-    #footer
+= partial :before_content
+#content
+  = yield
+= partial :after_content
