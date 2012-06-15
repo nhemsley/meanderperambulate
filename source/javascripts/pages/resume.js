@@ -2,7 +2,7 @@ resume = {
   name: "Nicholas Hemsley",
   address: "128 Wray Ave, WA, 6160",
   email: "nick.hems@gmail.com",
-  mobile: "<img src='/images/mob.png' />",
+  mobile: "0410 309 065",
   dob: "June 09, 1980",
   education:
   [{institution: "Completed Secondary Education – Year 12", description: "Busselton Senior High School, 1997"},
