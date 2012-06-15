@@ -349,15 +349,14 @@ div.experience
 
 #goals
 {
+  display: none;
   @include box-shadow-padded;
   font-family: $heading-font;
   font-size: 20px;
   color: white;
   background-color: $primary-one;
-  position: absolute;
-  left: 60%;
-  right: 150px;
-  top: 170px;
+  float:right;
+  width: 200px;
 
   p { margin-bottom: 10px; }
   

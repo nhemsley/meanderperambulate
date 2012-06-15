@@ -63,6 +63,14 @@ resume.setup = function()
   var cont = $.zc("div#resume");
   var content = App.dom.content();
   content.append(cont);
+
+  var goals = $.zen("div#goals.box");
+  cont.append(goals);
+  _(resume.goals).each(function (goal) {
+    goals.append($(goal));
+  });
+
+
   cont.append("<div class='details section'></div>");
   var container = cont.children().last();
   container.append("<h1>"+resume.name+"</h1>");
@@ -89,11 +97,6 @@ resume.setup = function()
     container.append("<div class='reference'><p class='reference'>" + reference.name + ", " + reference.title + "</p><p class='referencedetails'><strong>tel:</strong> " + reference.telephone + "<br /> <strong>email:</strong> " + reference.email + "</p></div>");
   });
   
-  var goals = $.zen("div#goals.box");
-  content.append(goals);
-  _(resume.goals).each(function (goal) {
-    goals.append($(goal));
-  });
 }
 
 resume.setup();
