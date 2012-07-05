@@ -21,3 +21,6 @@ Hacker..
   This is just a start, written in
   [Middleman](http://middlemanapp.com). Hopefully I will get more
   fleshed out soo, but until then, you may just want to look at my [resume](/resume.html).
+
+
+Also, here is my [Github](http://github.com/nhemsley/github) profile.
