@@ -1,6 +1,5 @@
 resume = {
   name: "Nicholas Hemsley",
-  address: "128 Wray Ave, WA, 6160",
   email: "nick.hems@gmail.com",
   mobile: "0410 309 065",
   dob: "June 09, 1980",
@@ -75,7 +74,7 @@ resume.setup = function()
   var container = cont.children().last();
   container.append("<h1>"+resume.name+"</h1>");
   function capitalize(string) { return string.charAt(0).toUpperCase() + string.slice(1);}
-  _.each(["address", "email", "mobile", "dob"], 
+  _.each(["email", "mobile", "dob"], 
     function(field) {container.append("<div class='detail'><span class='label'>"+capitalize(field)+"</span><span class='detail'>"+resume[field]+"</span></div>");});
   
   cont.append("<div class= 'education section'></div>");
