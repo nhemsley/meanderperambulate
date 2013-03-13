@@ -12,7 +12,7 @@ resume = {
     description: "I have been working casually as a freelance programmer & web developer for about 2 1/2 years. Some of my projects include: <p><a href='http://shop.houseofsnowball.com'>House of Snowball</a>, in which I implemented a online shop, integrating with paypal in Ruby on Rails.</p><p><a href='http://handmadeframes.com.au'>Hand Made Frames</a>, a small company based in Perth. I developed the site (to the client's design) using the <a href='http://middlemanapp.com'>Middleman</a> static site framework."},
   {business: "Leftclick.com.au",
     dates: "June 2012 - Feb 2013", 
-    description: "PHP, Mysql, javascript programming. At leftclick I worked primarily on two related projects. One was implementing a generic search framework & interface for a client of Leftclick, which is looking to launch it's online classifieds. Think multiple search constraints across a broad range of classifieds listings. Faced with a myriad of search options per classifieds & categories, we developed a data driven search framework, which expediated the creation of UI & database queries across this diverse range of classifieds listings. I also implemented a green-field SSO solution for a client needing Single Sign On across their range of online presences. I employed extensive functional testing to make sure the application behaved as expected, and kept behaving that way."}  
+    description: "PHP, Mysql, javascript programming. At leftclick I worked primarily on two related projects. One was implementing a generic search framework & interface for a client of Leftclick, which is looking to launch it's online classifieds. Think multiple search constraints across a broad range of classifieds listings. Faced with a myriad of search options per classifieds & categories, we developed a data driven search framework, which expediated the creation of UI & database queries across this diverse range of classifieds listings. I also implemented a green-field SSO solution for a client needing Single Sign On across their range of online presences. I employed extensive functional testing to make sure the application behaved as expected, and kept behaving that way."},
   {business:"Media on Mars",
    dates: "2003 - May 2012",
    description: "I have been working on a casual basis for Media on Mars as a freelance programmer for over 5 years. My duties include building dynamic websites (PHP, wordpress, & standalone), providing support for the designers with various aspects of html & css. I also provide IT support both in-house and remotely. This involved installation of Windows Small Business Server. Management of security aspects of the network, and enabling shared network access to design files. Configuration of Exchange Server, which allows the staff shared access to mail inboxes, calendar and business contacts. "},
@@ -45,8 +45,9 @@ resume = {
    ],
    references:
    [ 
-     {name: "Ben New", title:"Owner, Leftclick.com.au", telephone:"0407 089 890", email:"ben@leftclick.com.au"},
-     {name: "Kammi Rapsey", title:"Principal, Mediaonmars", telephone:"(08) 9433 3394", email:"kammi@mediaonmars.com.au"}
+     {name: "Ben New", title:"Owner, Leftclick.com.au", telephone:"0407 089 890"},
+     {name: "Kammi Rapsey", title:"Principal, Mediaonmars", telephone:"(08) 9433 3394"}
+   ],
    goals:
    [
     "<p><span class='title'>Goals:</span> To build cutting edge websites and software utilising state of the art web technologies.</p>",
@@ -90,7 +91,7 @@ resume.setup = function()
   container = cont.children().last();
   container.append("<h1>References</h1>");
   _.each(resume.references, function (reference) {
-    container.append("<div class='reference'><p class='reference'>" + reference.name + ", " + reference.title + "</p><p class='referencedetails'><strong>tel:</strong> " + reference.telephone + "<br /> <strong>email:</strong> " + reference.email + "</p></div>");
+    container.append("<div class='reference'><p class='reference'>" + reference.name + ", " + reference.title + "</p><p class='referencedetails'><strong>tel:</strong> " + reference.telephone);
   });
   
 }
