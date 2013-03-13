@@ -1,5 +1,5 @@
 source :rubygems
 
-gem "middleman"
-gem "RedCloth"
-#gem "middleman-blog"
+gem 'middleman'
+gem 'RedCloth'
+gem 'rb-inotify'
