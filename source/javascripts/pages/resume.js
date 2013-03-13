@@ -7,19 +7,15 @@ resume = {
   [{institution: "Completed Secondary Education – Year 12", description: "Busselton Senior High School, 1997"},
   {institution: "Edith Curtin University	2001 - 2005", description: "Bachelor's degree in Computer Science."}],
   experience:
-  [{disable: true,
-    business:"Deli 333",
-    dates: "November 2009 - Current",
-    description: "I currently work part time at Deli 333. My duties include preparing coffees, customer service and food preparation. I have been working at Deli 333 on a casual basis since returning to Perth."},
-   {business:"Freelance",
+  [{business:"Freelance",
     dates: "2009 - Current",
     description: "I have been working casually as a freelance programmer & web developer for about 2 1/2 years. Some of my projects include: <p><a href='http://shop.houseofsnowball.com'>House of Snowball</a>, in which I implemented a online shop, integrating with paypal in Ruby on Rails.</p><p><a href='http://handmadeframes.com.au'>Hand Made Frames</a>, a small company based in Perth. I developed the site (to the client's design) using the <a href='http://middlemanapp.com'>Middleman</a> static site framework."},
+  {business: "Leftclick.com.au",
+    dates: "June 2012 - Feb 2013", 
+    description: "PHP, Mysql, javascript programming. At leftclick I worked primarily on two related projects. One was implementing a generic search framework & interface for a client of Leftclick, which is looking to launch it's online classifieds. Think multiple search constraints across a broad range of classifieds listings. Faced with a myriad of search options per classifieds & categories, we developed a data driven search framework, which expediated the creation of UI & database queries across this diverse range of classifieds listings. I also implemented a green-field SSO solution for a client needing Single Sign On across their range of online presences. I employed extensive functional testing to make sure the application behaved as expected, and kept behaving that way."}  
   {business:"Media on Mars",
    dates: "2003 - May 2012",
    description: "I have been working on a casual basis for Media on Mars as a freelance programmer for over 5 years. My duties include building dynamic websites (PHP, wordpress, & standalone), providing support for the designers with various aspects of html & css. I also provide IT support both in-house and remotely. This involved installation of Windows Small Business Server. Management of security aspects of the network, and enabling shared network access to design files. Configuration of Exchange Server, which allows the staff shared access to mail inboxes, calendar and business contacts. "},
-/*  {business:"Bunnings Australia, Darwin Airport",
-   dates: "September 2009 – November 2009",
-   description: "Store relay / stocktake. I was working at Bunnings in Darwin on the store wide stock reorganization. My duties included stock take, customer service and night fill. I was working through an employment agency."},*/
   {business:"Sunflower Hostel, Berlin",
    dates: "July 2008 – January 2009",
    description: "I travelled in Europe for eight months, four of which were spent in Berlin. Whilst I still had an international contract with Phone Control, I worked in Berlin at the Sunflower Hostel doing afternoon & night shifts. My duties included check-in & check-out of guests, and serving guests drinks from behind the bar."},
@@ -48,8 +44,9 @@ resume = {
    description: "I was a pizza delivery driver for 6 months at the Morley store for Dominoes Pizza. I also performed general duties around the store. Also serving customers, taking orders & operating the POS system."}
    ],
    references:
-   [ {name: "Kammi Rapsey", title:"Principal", telephone:"(08) 9433 3394", email:"kammi@mediaonmars.com.au"},
-     {name: "Ross Gerring", title: "Manager", telephone:"(08) 9321 3844", email: "ross@itomic.com.au"} ],
+   [ 
+     {name: "Ben New", title:"Owner, Leftclick.com.au", telephone:"0407 089 890", email:"ben@leftclick.com.au"},
+     {name: "Kammi Rapsey", title:"Principal, Mediaonmars", telephone:"(08) 9433 3394", email:"kammi@mediaonmars.com.au"}
    goals:
    [
     "<p><span class='title'>Goals:</span> To build cutting edge websites and software utilising state of the art web technologies.</p>",
